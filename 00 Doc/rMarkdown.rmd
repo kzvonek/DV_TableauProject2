@@ -26,21 +26,21 @@ source("../01 SQL Crosstabs/sqlCrosstabs.R")
 
 This rank crosstab partitions by Industry and ranks each Company within the Industry by Revenue.  
 ```{r, eval=TRUE, echo=TRUE}
-summary(dfRANKREVENUE)
+head(dfRANKREVENUE)
 ```
 
 
 This crosstab partitions companies by State, is sorted by Growth, then reports the max Growth for each State in a max_Growth column. Then another column is created with the difference between the company with the maximum growth and all other companies within the State. 
 ```{r, eval=TRUE, echo=TRUE}
-summary(dfMAX)
+head(dfMAX)
 ```
 This crosstab partitions the companies by industry then returns the nth highest growth in each industry. In our case it returns the 2nd highest growth for each industry in a column called Second_Growth. 
 ```{r, eval=TRUE, echo=TRUE}
-summary(dfnth)
+head(dfnth)
 ```
 This crosstab first partitions the companies by state and orders them by revenue. Then it gives the cumulative distribution of the revenue of each company within the state partition.
 ```{r, eval=TRUE, echo=TRUE}
-summary(dfcume_dist)
+head(dfcume_dist)
 ```
 
 

@@ -6,13 +6,5 @@ dfnth <- data.frame(eval(parse(text=substring(getURL(URLencode('http://129.152.1
 
 dfcume_dist <- data.frame(eval(parse(text=substring(getURL(URLencode('http://129.152.144.84:5001/rest/native/?query="SELECT COMPANYID, STATE, REVENUE, cume_dist() OVER (PARTITION BY STATE order by REVENUE) cume_dist from TOPCOMPANIES order by 2,3 desc"'), httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL', USER='C##cs329e_nh5797', PASS='orcl_nh5797', MODE='native_mode', MODEL='model', returnFor = 'R', returnDimensions = 'False'), verbose = TRUE), 1, 2^31-1))))
 
-dfMAX <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query=
-"select COMPANYID, STATE, GROWTH, last_value(max_GROWTH) 
-OVER (PARTITION BY STATE order by GROWTH) max_GROWTH, last_value(max_GROWTH) 
-OVER (PARTITION BY STATE order by GROWTH) - GROWTH Growth_diff
-from
-(SELECT COMPANYID, STATE, GROWTH, max(GROWTH)
-OVER (PARTITION BY STATE) max_GROWTH 
-FROM TOPCOMPANIES) 
-order by 2,3 desc"
-')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521/ORCL.usuniversi01134.oraclecloud.internal', USER='C##cs329e_nh5797', PASS='orcl_nh5797', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE))); tbl_df(df)
+dfMAX <- data.frame(eval(parse(text=substring(getURL(URLencode('http://129.152.144.84:5001/rest/native/?query="SELECT COMPANYID, STATE, GROWTH, last_value(max_GROWTH) OVER (PARTITION BY STATE order by GROWTH) max_GROWTH, last_value(max_GROWTH) OVER (PARTITION BY STATE order by GROWTH) - GROWTH Growth_diff from (SELECT COMPANYID, STATE, GROWTH, max(GROWTH) OVER (PARTITION BY STATE) max_GROWTH FROM TOPCOMPANIES) order by 2,3 desc"'), httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL', USER='C##cs329e_nh5797', PASS='orcl_nh5797', MODE='native_mode', MODEL='model', returnFor = 'R', returnDimensions = 'False'), verbose = TRUE), 1, 2^31-1))))
+
